@@ -1,6 +1,3 @@
-#Este script contiene  funciones para modelar datos 
-#que luego voy a utilizar en otros scripts
-
 import csv
 import pandas as pd
 from openpyxl import load_workbook
@@ -180,41 +177,11 @@ def modifica_char_esp(lista:list,char_borrar:List[Tuple[str,str,int]],nombre_col
     
     return lista
 
-def sin_acentos(palabra:str):
-    minusculas_con_acentos = 'áéíóú'
-    minusculas_sin_acentos = 'aeiou'
-    resultado = ''
-
-    for letra in palabra:
-        if letra in minusculas_con_acentos:
-            # Obtener el índice de la letra con acento
-            indice = minusculas_con_acentos.index(letra)
-            # Reemplazarla por la letra sin acento
-            resultado += minusculas_sin_acentos[indice]
-        else:
-            resultado += letra
-
-    return resultado
-
     
      
 
 
 
-
-#pruebas
-if __name__ == "__main__":
-    #prueba=leer_csv('mensualxPersona3.csv')
-    #prueba=str_to_float(prueba,1,[12,13])
-    #prueba=rellenar_superior(prueba,1,[0,1,2])
-    #resultado=(copiar_filtro(prueba,1,True,10,['1013']))
-    #df_resultado=pd.DataFrame(resultado)
-    #pegar_excel('Control Liq CC 023.xlsx','BBDD',resultado)
-    #control_c=(lista_pertenencia(par,contratos,0,1))
-    #contratos=leer_csv('contratos.csv')
-    #par= (conjunto_x_parametro(contratos,0,False))
-    #df_resultado.to_excel('prueb.xlsx', index=False,header=False)
-    print(sin_acentos('fión'))
 
 
 
