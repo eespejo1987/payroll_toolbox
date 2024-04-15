@@ -5,7 +5,7 @@ import time
 
 #requiere: nomina(activo+inactivo) + recibos.pdf (nombre numero+nombre_archivo)
 #asegura: un pdf por contrato x orden de recibos x orden alfabetico
-#_recibos: ruta_recibos
+#r_recibos: ruta_recibos
 def imp_orden_alf(nomina:list,nomina_bajas:list,contratos:list,r_recibos:str,r_consolidado:str,r_img:str,
                   r_resultados:str,ubicacion_1,ubicacion_2):
     lista_impresion:list=[]
@@ -32,7 +32,7 @@ def imp_orden_alf(nomina:list,nomina_bajas:list,contratos:list,r_recibos:str,r_c
     conjunto_cuil=f.conjunto_x_parametro(lista_cuil_ocr,0,True)
     hojas_cuil=f.lista_pertenencia(conjunto_cuil,lista_cuil_ocr,0,1)
     
-    #asigna hojas a nomina calipso    
+    #asigna hojas a nomina sistema    
     for x in range(1,len(nomina_mes),1):
         if (nomina_mes[x][2]in conjunto_cuil) == True:
             for y in range(0,len(hojas_cuil),1):
@@ -69,7 +69,7 @@ def imp_orden_alf(nomina:list,nomina_bajas:list,contratos:list,r_recibos:str,r_c
                         r_resultados,f'{nombre_pdf}.pdf')
 
 
-    #quita columna neto acordado 
+    #quita columna neto 
     nomina_enviar=[]
     for elemento in nomina_mes:
         datos=[]
@@ -77,37 +77,12 @@ def imp_orden_alf(nomina:list,nomina_bajas:list,contratos:list,r_recibos:str,r_c
             if x!=8:
                 datos.append(elemento[x])
         nomina_enviar.append(datos)
-                                        
+    
+    #genera excel con datos para control de resultados                                    
     df_resultado=pd.DataFrame(nomina_enviar)
     df_resultado.to_excel(f'{r_resultados}nomina_impresion.xlsx', 
                           sheet_name='Resultados',index=False,header=False)
     
 
 
-if __name__ == "__main__":
-    inicio= time.time()
-    #NQN
-    '''imp_orden_alf(f.leer_csv('proceso_recibos/archivos_csv/nomina_activa.csv'),
-                f.leer_csv('proceso_recibos/archivos_csv/bajas_mes.csv'),
-                f.leer_csv('proceso_recibos/archivos_csv/contratos.csv'),
-                'proceso_recibos/recibos/','proceso_recibos/consolidado','proceso_recibos/imagenes/',
-                'proceso_recibos/resultados/',(1850, 402, 2022, 443))'''
-    #daniela + lucia (tipo A4)
-    imp_orden_alf(f.leer_csv('proceso_recibos/archivos_csv/nomina_activa.csv'),
-                f.leer_csv('proceso_recibos/archivos_csv/bajas_mes.csv'),
-                f.leer_csv('proceso_recibos/archivos_csv/contratos.csv'),
-                'proceso_recibos/recibos/','proceso_recibos/consolidado','proceso_recibos/imagenes/',
-                'proceso_recibos/resultados/',(1850, 439, 2021, 482),(1853,459,2022,500))
-    
-    #Serma: lucia (tipo A4)
-    '''imp_orden_alf(f.leer_csv('proceso_recibos/archivos_csv/serma_nomina_activa.csv'),
-                f.leer_csv('proceso_recibos/archivos_csv/serma_bajas_mes.csv'),
-                f.leer_csv('proceso_recibos/archivos_csv/serma_contratos.csv'),
-                'proceso_recibos/recibos/','proceso_recibos/consolidado','proceso_recibos/imagenes/',
-                'proceso_recibos/resultados/',(1810, 222, 1974, 264),(1853,459,2022,500))'''
-    
 
-
-    fin= time.time()
-    ejecucion=fin - inicio
-    print(f'Tiempo de ejecución: {ejecucion} segundos')
