@@ -32,48 +32,6 @@ def control_rt(base_informe:list,cc:list,ruta:str,destino:str,nombre:str):
     return
 
 
-if __name__ == "__main__":
-    inicio= time.time()
-
-    liquidacion = f.leer_csv('informesRT/datos/mensualxPersona.csv')
-    afectados = f.leer_csv( 'informesRT/datos/contratos.csv')
-
-    base_reporte=(base_control_rt(liquidacion,afectados))
-
-    control_rt(base_reporte,['009'],'informesRT/archivo_base/Control Liq CC 009 FF-FB.xlsx',
-            'informesRT/resultados','Control Liq CC 009 FF-FB.xlsx')
-    '''
-    control_rt(base_reporte,['023'],'informesRT/archivo_base/Control Liq CC 023.xlsx',
-            'informesRT/resultados','Control Liq CC 023.xlsx')
-
-    control_rt(base_reporte,['111','118','232','381'],'informesRT/archivo_base/Control Liq CC 111 118 232 381.xlsx',
-            'informesRT/resultados','Control Liq CC 111 118 232 381.xlsx')
-
-    control_rt(base_reporte,['226'],'informesRT/archivo_base/Control Liq CC 226 - FF FB.xlsx',
-            'informesRT/resultados','Control Liq CC 226 - FF FB.xlsx')
-
-    control_rt(base_reporte,['703'],'informesRT/archivo_base/Control Liq CC 703 Leyva.xlsx',
-            'informesRT/resultados','Control Liq CC 703 Leyva.xlsx')
-
-    control_rt(base_reporte,['706'],'informesRT/archivo_base/Control Liq CC 706 Ayub-Danil.xlsx',
-            'informesRT/resultados','Control Liq CC 706 Ayub-Danil.xlsx')
-
-    control_rt(base_reporte,['713','728'],'informesRT/archivo_base/Control Liq CC 713 728 PPereyra.xlsx',
-            'informesRT/resultados','Control Liq CC 713 728 PPereyra.xlsx')
-
-    control_rt(base_reporte,['726'],'informesRT/archivo_base/Control Liq CC 726 EDestefano.xlsx',
-            'informesRT/resultados','Control Liq CC 726 EDestefano.xlsx')
-
-    control_rt(base_reporte,['768'],'informesRT/archivo_base/Control Liq CC 768 Ayub.xlsx',
-            'informesRT/resultados','Control Liq CC 768 Ayub.xlsx')'''
-
-    fin= time.time()
-    ejecucion=fin - inicio
-    print(f'Tiempo de ejecución: {ejecucion} segundos')
-
-
-
-
 
 
 
