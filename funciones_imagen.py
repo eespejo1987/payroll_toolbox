@@ -103,23 +103,7 @@ def generar_pdf_con_paginas(origen, paginas, ruta_destino, nombre_destino):
             output_pdf.write(output_file)
 
 
-#pruebas
-if __name__ == "__main__":
-    inicio= time.time()
-    lista_r=f.listar_x_extension('proceso_recibos/recibos/','pdf')
-    pdf_a_png('proceso_recibos/recibos/',lista_r,'proceso_recibos/imagenes/')
-    #prueba=ocr_lista_cuiles('proceso_recibos/imagenes/',(1850, 439, 2021, 482))
-    #ver recibos convencionales
 
-    #cuiles=f.conjunto_x_parametro(prueba,0,True)
-    #hojas_cuil=f.lista_pertenencia(cuiles,prueba,0,1)
-
-    #df_resultado=pd.DataFrame(hojas_cuil)
-    #df_resultado.to_excel('prueb.xlsx', index=False,header=False)
-
-    #consolidar_pdf('proceso_recibos/recibos/',lista_r,'proceso_recibos/consolidado','recibos_consolidados.pdf')
-    #fin= time.time()
-    #ejecucion=fin - inicio
     #print(f'Tiempo de ejecución: {ejecucion} segundos')
     #generar_pdf_con_paginas('proceso_recibos/consolidado/recibos_consolidado.pdf',[0,2],
     #                        'proceso_recibos/resultados/','nuevo.pdf')
